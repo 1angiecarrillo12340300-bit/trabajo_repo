@@ -1,17 +1,40 @@
-# stylestack
+# Wardrobe App
 
-A new Flutter project.
+Aplicación Flutter para gestionar y visualizar prendas de ropa. Permite capturar imágenes, organizarlas en una cuadrícula y administrarlas mediante un sistema de estado.
 
-## Getting Started
+## Estructura del Proyecto
 
-This project is a starting point for a Flutter application.
+```
+lib/
+│
+├── models/
+│   └── clothing_item.dart       # Modelo de datos para prendas
+│
+├── providers/
+│   └── wardrobe_provider.dart   # Manejo de estado de la app
+│
+├── screens/
+│   ├── home_screen.dart         # Pantalla principal
+│   ├── camera_screen.dart       # Captura de imágenes
+│   └── grid_screen.dart         # Visualización en grid
+│
+├── services/                    # Servicios (API, almacenamiento, etc.)
+│
+├── widgets/
+│   └── clothing_card.dart       # Widget reutilizable para prendas
+│
+└── main.dart                    # Punto de entrada
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Funcionalidades
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+* Captura de prendas con la cámara
+* Visualización en formato grid
+* Gestión de estado con Provider
+* Componentes reutilizables
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tecnologías
+
+* Flutter
+* Dart
+* Provider (gestión de estado)

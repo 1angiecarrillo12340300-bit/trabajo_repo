@@ -13,7 +13,7 @@ class GridScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Mi guardarropa"),
+        title: const Text("Mi guardar ropa"),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
