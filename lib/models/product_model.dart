@@ -18,8 +18,8 @@ class ProductModel {
       id: json['id'],
       title: json['title'],
       price: (json['price'] as num).toDouble(),
-      category: json['category'],
-      image: json['image'],
+      category: json['category'] ?? '',
+      image: json['thumbnail'] ?? '',  // DummyJSON usa 'thumbnail'
     );
   }
 }
