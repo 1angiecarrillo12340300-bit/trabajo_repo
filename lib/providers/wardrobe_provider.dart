@@ -19,11 +19,13 @@ class WardrobeProvider extends ChangeNotifier {
   }
 
   // ➕ Agregar prenda
-  Future<void> addClothing(String name, String imagePath) async {
+  Future<void> addClothing(String name, String imagePath, {String? category, String? color}) async {
     final newItem = ClothingItem(
       id: const Uuid().v4(),
       name: name,
       imagePath: imagePath,
+      category: category,
+      color: color,
     );
 
     _clothes.add(newItem);
