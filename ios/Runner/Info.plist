@@ -66,5 +66,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<!-- Permisos de cámara e imágenes -->
+	<key>NSCameraUsageDescription</key>
+	<string>Necesitamos acceso a la cámara para capturar fotos de tus prendas.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Necesitamos acceso a tu galería para seleccionar fotos de tus prendas.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Necesitamos permiso para guardar fotos en tu galería.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>La ubicación se usa para la información de ubicación de las fotos.</string>
 </dict>
 </plist>
