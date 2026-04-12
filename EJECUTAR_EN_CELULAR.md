@@ -212,7 +212,16 @@ adb devices
 ```
 
 ### **Error: "Permission denied" en Android**
-```bash
+```bash[oswal@hp-14 estilos-de-ropa-]$ Launching lib/main.dart on 24094RAD4G in debug mode...
+Exception in thread "main" java.lang.RuntimeException: Timeout of 120000 reached waiting for exclusive access to file: /home/oswal/.gradle/wrapper/dists/gradle-8.14-all/c2qonpi39x1mddn7hk5gh9iqj/gradle-8.14-all.zip
+        at org.gradle.wrapper.ExclusiveFileAccessManager.access(ExclusiveFileAccessManager.java:61)
+        at org.gradle.wrapper.Install.createDist(Install.java:48)
+        at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:128)
+        at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:61)
+Running Gradle task 'assembleDebug'...                            122,1s
+[!] Gradle threw an error while downloading artifacts from the network.
+Retrying Gradle Build: #1, wait time: 100ms
+Running Gradle task 'assembleDebug'...                                 ⣯
 # Ejecutar con permisos
 sudo adb kill-server
 sudo adb start-server
