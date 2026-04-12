@@ -29,6 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< HEAD
 
   cupertino_icons: ^1.0.2
 
@@ -36,7 +37,16 @@ dependencies:
   provider: ^6.0.5
 
   # 🌐 API
+=======
+  cupertino_icons: ^1.0.8
+>>>>>>> 6ec51dca6f4a8fdb8dc06ad281200c1322473e66
   http: ^1.2.0
+  provider: ^6.0.0
+  uuid: ^4.0.0
+  shared_preferences: ^2.2.0
+  camera: ^0.10.5+5
+  image_picker: ^1.0.4
+  path_provider: ^2.1.1
 
   # 📸 Cámara / galería
   image_picker: ^1.0.4

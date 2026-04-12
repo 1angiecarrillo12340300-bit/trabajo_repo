@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 
 void main() {
+=======
+import 'package:provider/provider.dart';
+import 'providers/wardrobe_provider.dart';
+import 'screens/home_screen.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+>>>>>>> 6ec51dca6f4a8fdb8dc06ad281200c1322473e66
   runApp(const MyApp());
 }
 
@@ -10,6 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -120,3 +130,26 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+=======
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => WardrobeProvider()),
+      ],
+      child: MaterialApp(
+        title: 'StyleStack - Estilos de Ropa',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2196F3)),
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFF2196F3),
+            foregroundColor: Colors.white,
+            elevation: 0,
+          ),
+        ),
+        home: const HomeScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
+  }
+}
+>>>>>>> 6ec51dca6f4a8fdb8dc06ad281200c1322473e66

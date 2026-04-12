@@ -6,10 +6,8 @@ class WardrobeProvider extends ChangeNotifier {
   final StorageService _storageService = StorageService();
 
   List<ClothingItem> _clothes = [];
-  List<ClothingItem> _favorites = [];
 
   List<ClothingItem> get clothes => _clothes;
-  List<ClothingItem> get favorites => _favorites;
 
   //  Cargar datos al iniciar
   Future<void> loadClothes() async {
@@ -23,6 +21,7 @@ class WardrobeProvider extends ChangeNotifier {
   }
 
   // ➕ Agregar prenda
+<<<<<<< HEAD
   Future<void> addClothing(ClothingItem item) async {
     try {
       _clothes.add(item);
@@ -31,6 +30,21 @@ class WardrobeProvider extends ChangeNotifier {
     } catch (e) {
       print('Error adding clothing: $e');
     }
+=======
+  Future<void> addClothing(String name, String imagePath, {String? category, String? color}) async {
+    final newItem = ClothingItem(
+      id: const Uuid().v4(),
+      name: name,
+      imagePath: imagePath,
+      category: category,
+      color: color,
+      isFavorite: false,
+    );
+
+    _clothes.add(newItem);
+    await _storageService.saveClothes(_clothes);
+    notifyListeners();
+>>>>>>> 6ec51dca6f4a8fdb8dc06ad281200c1322473e66
   }
 
   // Eliminar prenda
@@ -46,6 +60,7 @@ class WardrobeProvider extends ChangeNotifier {
     }
   }
 
+<<<<<<< HEAD
   // 🤍 Favoritos
   Future<void> toggleFavorite(ClothingItem item) async {
     try {
@@ -58,6 +73,40 @@ class WardrobeProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print('Error toggling favorite: $e');
+=======
+  // Toggle favorito
+  Future<void> toggleFavorite(ClothingItem item) async {
+    try {
+      final index = _clothes.indexWhere((e) => e.id == item.id);
+      if (index != -1) {
+        _clothes[index] = _clothes[index].copyWith(
+          isFavorite: !_clothes[index].isFavorite,
+        );
+        await _storageService.saveClothes(_clothes);
+        notifyListeners();
+      }
+    } catch (e) {
+      // Error manejado, no hace nada
+      notifyListeners();
+    }
+  }
+
+  // Obtener favoritos
+  List<ClothingItem> getFavorites() {
+    try {
+      return _clothes.where((item) => item.isFavorite).toList();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  // Verificar si es favorito
+  bool isFavorite(String id) {
+    try {
+      return _clothes.any((item) => item.id == id && item.isFavorite);
+    } catch (e) {
+      return false;
+>>>>>>> 6ec51dca6f4a8fdb8dc06ad281200c1322473e66
     }
   }
 
