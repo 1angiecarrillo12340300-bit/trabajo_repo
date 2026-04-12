@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/clothing_item.dart';
 import '../services/storage_service.dart';
-import 'package:uuid/uuid.dart';
 
 class WardrobeProvider extends ChangeNotifier {
   final StorageService _storageService = StorageService();
@@ -14,37 +13,65 @@ class WardrobeProvider extends ChangeNotifier {
 
   //  Cargar datos al iniciar
   Future<void> loadClothes() async {
-    _clothes = await _storageService.loadClothes();
-    notifyListeners();
+    try {
+      _clothes = await _storageService.loadClothes();
+      _favorites = await _storageService.loadFavorites();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading clothes: $e');
+    }
   }
 
   // ➕ Agregar prenda
-  Future<void> addClothing(String name, String imagePath) async {
-    final newItem = ClothingItem(
-      id: const Uuid().v4(),
-      name: name,
-      imagePath: imagePath,
-    );
-
-    _clothes.add(newItem);
-    await _storageService.saveClothes(_clothes);
-    notifyListeners();
+  Future<void> addClothing(ClothingItem item) async {
+    try {
+      _clothes.add(item);
+      await _storageService.saveClothes(_clothes);
+      notifyListeners();
+    } catch (e) {
+      print('Error adding clothing: $e');
+    }
   }
 
   // Eliminar prenda
   Future<void> removeClothing(String id) async {
-    _clothes.removeWhere((item) => item.id == id);
-    await _storageService.saveClothes(_clothes);
-    notifyListeners();
+    try {
+      _clothes.removeWhere((item) => item.id == id);
+      _favorites.removeWhere((item) => item.id == id);
+      await _storageService.saveClothes(_clothes);
+      await _storageService.saveFavorites(_favorites);
+      notifyListeners();
+    } catch (e) {
+      print('Error removing clothing: $e');
+    }
   }
 
-  // Favoritos
-  void toggleFavorite(ClothingItem item) {
-    if (_favorites.contains(item)) {
-      _favorites.remove(item);
-    } else {
-      _favorites.add(item);
+  // 🤍 Favoritos
+  Future<void> toggleFavorite(ClothingItem item) async {
+    try {
+      if (_favorites.contains(item)) {
+        _favorites.remove(item);
+      } else {
+        _favorites.add(item);
+      }
+      await _storageService.saveFavorites(_favorites);
+      notifyListeners();
+    } catch (e) {
+      print('Error toggling favorite: $e');
     }
-    notifyListeners();
+  }
+
+  // Verificar si un item es favorito
+  bool isFavorite(ClothingItem item) {
+    return _favorites.contains(item);
+  }
+
+  // Obtener prenda por ID
+  ClothingItem? getClothingById(String id) {
+    try {
+      return _clothes.firstWhere((item) => item.id == id);
+    } catch (e) {
+      return null;
+    }
   }
 }
