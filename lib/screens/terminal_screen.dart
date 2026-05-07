@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/typing_text.dart';
 
 class TerminalScreen extends StatelessWidget {
   const TerminalScreen({super.key});
@@ -9,13 +10,23 @@ class TerminalScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("SHADOWNET"),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16),
-        child: Text(
-          "> Inicializando sistema...\n"
-          "> Conectando...\n"
-          "> Acceso concedido ✔\n"
-          "> Bienvenido usuario\n",
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.black, Colors.green.shade900],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(16),
+          child: TypingText(
+            text:
+                "> Inicializando sistema...\n"
+                "> Conectando...\n"
+                "> Acceso concedido ✔\n"
+                "> Bienvenido usuario\n",
+          ),
         ),
       ),
     );
