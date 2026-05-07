@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Wardrobe App
 
 Aplicación Flutter para gestionar y visualizar prendas de ropa. Permite capturar imágenes, organizarlas en una cuadrícula y administrarlas mediante un sistema de estado.
@@ -38,3 +39,6 @@ lib/
 * Flutter
 * Dart
 * Provider (gestión de estado)
+=======
+# trabajo_repo
+>>>>>>> 52de3fc206db7ecc02ca3e537bb4994038225fd8
