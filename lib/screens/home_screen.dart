@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'grid_screen.dart';
 import 'camera_screen.dart';
 import 'suggestions_screen.dart';
+import 'map_screen.dart'; 
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const GridScreen(),
     const CameraScreen(),
     const SuggestionsScreen(),
+    const MapScreen(),
   ];
 
   @override
@@ -47,6 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.lightbulb),
             label: "Sugerencias",
+          ),
+          BottomNavigationBarItem( // ✅ NUEVO
+            icon: Icon(Icons.map),
+            label: "Mapa",
           ),
         ],
       ),
