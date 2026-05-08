@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/wardrobe_provider.dart';
 import 'screens/home_screen.dart';
+import 'screens/lock_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
             elevation: 0,
           ),
         ),
-        home: const HomeScreen(),
+        home: const LockScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );
